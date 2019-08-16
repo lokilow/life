@@ -1,0 +1,22 @@
+<h2>Board Dimensions</h2>
+Columns: <%= @board.dimensions.columns %>
+Rows: <%= @board.dimensions.rows %>
+<%= live_render(@socket, LifeWeb.BoardLive, session: %{board: @board}) %>
+<style>
+.board-grid {
+  display: grid;
+  grid-template-columns: repeat(<%= @board.dimensions.columns %>, 5em);
+  grid-template-rows: repeat(<%= @board.dimensions.rows %>, 5em);
+}
+.cell {
+  border: 1px solid black;
+  background-color: turquoise;
+}
+<%= for {{col, row}, _} <- @board.cells do %>
+  #cell-<%= col %>-<%= row %> {
+    grid-column: <%= col %>;
+    grid-row: <%= row %>;
+  }
+<% end %>
+</style>
+

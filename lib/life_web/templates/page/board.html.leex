@@ -1,0 +1,5 @@
+<div class="board-grid">
+<%= for {{col, row}, alive?} <- @board.cells do %>
+  <div class="cell" id="<%= "cell-#{col}-#{row}" %>"> <%= "#{col}-#{row}" %></div>
+<% end %>
+</div>
